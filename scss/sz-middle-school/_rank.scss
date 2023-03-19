@@ -1,0 +1,139 @@
+.module-header.rank {
+    height: 40px;
+    background-image: url('/m-rank-header.svg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 4px solid #4CD22B;
+        border-left: 4px solid #4CD22B;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        left: 1px;
+        top: 1px;
+    }
+
+    >div {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 40px;
+        color: #55A7C0;
+        position: relative;
+
+        &:first-child {
+            margin-right: 50px;
+        }
+
+        &.active {
+            color: #FFFFFF;
+
+            &::after {
+                position: absolute;
+                content: '';
+                display: block;
+                width: 68px;
+                height: 2px;
+                background-color: #fff;
+                bottom: 0;
+                left: calc(50% - 34px);
+            }
+        }
+    }
+}
+
+.module-container.rank {
+
+    .module-main {
+        box-sizing: border-box;
+        padding: 23px;
+        padding-bottom: 21px;
+        display: none;
+
+        &.active {
+            display: block;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
+            justify-content: space-between;
+
+            .icon {
+                width: 28px;
+                height: 28px;
+                background-image: url('/m-rank-icon2.svg'), url('/m-rank-icon1.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                margin-right: 13px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    font-weight: 700;
+                    font-size: 15px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+            }
+
+            .left {
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+            }
+
+            .book-info {
+                .book-name {
+                    font-weight: 700;
+                    font-size: 15px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    margin-right: 10px;
+                }
+
+                .book-author {
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #5E9DC0;
+                }
+            }
+
+            .borrow-num {
+                display: flex;
+                align-items: center;
+
+                .label {
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #5E9DC0;
+                    margin-right: 10px;
+                }
+
+                .number {
+                    font-size: 16px;
+                    line-height: 22px;
+                    text-align: right;
+                    color: #96D2E4;
+                }
+            }
+        }
+    }
+
+}

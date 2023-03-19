@@ -1,0 +1,80 @@
+.module-container {
+    background-image: url('/m-module-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 445px;
+    height: 281px;
+    &.campus {
+        width: 918px;
+        height: 315px;
+        background-image: url('/m-module-bg-m.svg');
+    }
+    &.overview {
+        width: 916px;
+        height: 100%;
+        background-image: none;
+    }
+    &.announcement, &.activity, &.recommend, &.rank {
+        align-self: end;
+    }
+}
+
+.module-header:not(.rank) {
+    height: 41px;
+    padding: 3px 0 8px 17px;
+    box-sizing: border-box;
+    background-image: url('/m-module-header.svg'), 
+    url('/m-module-header-r.svg'),
+    url('/m-module-header-r-b.svg');
+    background-repeat: no-repeat;
+    background-position: 1px 1px, right bottom, right bottom;
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: calc(100% - 354px);
+        height: 1px;
+        background-color: #115F81;
+        left: 1px;
+        bottom: 0;
+    }
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        background-color: #16D5FF;
+        left: 1px;
+        bottom: 0;
+    }
+    i {
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 4px solid #4CD22B;
+        border-left: 4px solid #4CD22B;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        left: 1px;
+        top: 1px;  
+    }
+    > span {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 29px;
+        background: linear-gradient(180deg, #FFFFFF 61.36%, rgba(255, 255, 255, 0) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.module-main {
+    height: calc(100% - 41px);
+}

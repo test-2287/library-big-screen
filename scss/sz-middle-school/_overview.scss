@@ -1,0 +1,89 @@
+.module-container.overview {
+    .data-box {
+        margin-bottom: 24px;
+        height: 70px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+        background-color: rgba(0, 0, 0, 0.4);
+        
+        > div {
+            display: flex;
+            align-items: center;
+            position: relative;
+            &:not(:last-child) {
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 1px;
+                    height: 40px;
+                    background-color: rgba(27, 118, 157, 1);
+                    right: 0;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                }
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 3px;
+                    height: 16px;
+                    background-color: rgba(23, 175, 222, 1);
+                    right: -1px;
+                    top: 0;
+                }
+            }
+
+            span.label {
+                width: 64px;
+                padding-right: 30px;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 22px;
+                color: #2B98BA;
+            }
+            span.number {
+                font-weight: 700;
+                font-size: 36px;
+                line-height: 49px;
+                text-align: right;
+                background: linear-gradient(180deg, #FFFFFF 36.98%, #25BEEE 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+                padding-right: 27px;
+            }
+
+        }
+    }
+
+    .video-container {
+        width: 916px;
+        height: 525px;
+        background-image: url('/m-video-bg.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i.icon-video {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-image: url('/m-video-icon.svg');
+            background-repeat: no-repeat;
+            background-size: center;
+        }
+        video {
+            width: 860px;
+            height: 480px;
+        }
+    }
+}

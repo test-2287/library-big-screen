@@ -1,0 +1,85 @@
+.module-container.rank {
+
+    .module-main {
+        box-sizing: border-box;
+        padding: 16px;
+        padding-top:14px;
+        padding-right: 20px;
+
+        .list-item {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+
+            justify-content: space-between;
+
+            .icon {
+                width: 23px;
+                height: 28px;
+                background-image: url('/s-rank-icon1.svg') , url('/s-rank-icon2.svg');
+                background-size: contain;
+                background-position: 0 4px, center;
+                background-repeat: no-repeat;
+                margin-right: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    margin-top: 2px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 21px;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+            }
+
+            .left {
+                display: flex;
+                align-items: center;
+                margin-right: 10px;
+            }
+
+            .book-info {
+                .book-name {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    margin-right: 8px;
+                }
+
+                .book-author {
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #80A3FF;
+                }
+            }
+
+            .borrow-num {
+                display: flex;
+                align-items: center;
+
+                .label {
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #80A3FF;
+                    margin-right: 10px;
+                }
+
+                .number {
+                    font-size: 16px;
+                    line-height: 22px;
+                    text-align: right;
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+
+}

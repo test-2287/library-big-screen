@@ -1,0 +1,142 @@
+.module-container.campus {
+    .module-header {
+        position: relative;
+
+        .day-year-brief {
+            position: absolute;
+            top: 50%;
+            right: 100px;
+            transform: translate(0, -50%);
+            background-image: url('/m-campus-l.svg'), url('/m-campus-r.svg');
+            background-position: left center, right center;
+            background-repeat: no-repeat;
+            display: flex;
+
+            >div {
+                display: flex;
+                align-items: center;
+                span {
+                    color: rgba(75, 146, 186, 1);
+                    font-size: 13px;
+                    line-height: 18px;
+                    padding: 0 10px;
+                    &.number {
+                        font-weight: 700;
+                        font-size: 20px;
+                        line-height: 27px;
+                        color: #fff;
+                        padding-right: 20px;
+                    }
+                }
+                &:first-child {
+                    > span:first-child {
+                        padding-left: 13px;
+                    }
+                }
+                &:last-child {
+                    > span.number {
+                        padding-right: 13px;
+                    }
+                }
+                &:not(:last-child) {
+                    .number {
+                        position: relative;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 1px;
+                            height: 18px;
+                            right: 0;
+                            top: 50%;
+                            transform: translate(0, -50%);
+                            background-color: rgba(75, 146, 186, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.module-main.campus {
+    box-sizing: border-box;
+    padding: 35px 22px 32px;
+    display: flex;
+    justify-content: space-between;
+    
+
+    .chart-container {
+        position: relative;
+    }
+    .chart-header {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .chart-name {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+            color: #4485AA;
+            display: flex;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('/m-campus-chart-icon.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 11px;
+        }
+        .chart-legend {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            line-height: 16px;
+            color: #4485AA;
+            > span {
+                display: flex;
+                align-items: center;
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 10px;
+                    height: 4px;
+                    margin-right: 8px;
+                }
+                &:first-child {
+                    margin-right: 12px;
+                    &:before {
+                        background: rgba(52, 199, 232, 1);
+                    }
+                }
+                &:nth-child(2) {
+                    &:before {
+                        background: rgba(76, 210, 43, 1);
+                    }
+                }
+            }
+
+            
+
+        }
+    }
+
+    .chart-container.day-data {
+        height: 207px;
+        .chart {
+            width: 405px;
+            height: 207px;
+        }
+    }
+
+    .chart-container.year-data {
+        height: 207px;
+
+        .chart {
+            width: 405px;
+            height: 207px;
+        }
+    }
+}

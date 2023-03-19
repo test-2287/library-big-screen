@@ -1,0 +1,91 @@
+.module-main.book {
+    box-sizing: border-box;
+    padding-right: 39px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .chart-container {
+        position: relative;
+        margin-right: 20px;
+        width: 220px;
+        height: 220px;
+    
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 117px;
+            height: 117px;
+            background-image: url('/m-pie-center.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    
+            .label {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 19px;
+                color: rgba(68, 133, 170, 1);
+            }
+    
+            .number {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 27px;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .chart-info {
+        display: flex;
+        flex-direction: column;
+    
+        .item {
+            width: 168px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(12, 72, 98, 1);
+            font-size: 14px;
+            line-height: 19px;
+            color: rgba(75, 146, 186, 1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &:nth-child(n+2) {
+                margin-top: 23px;
+            }
+    
+            .label-box {
+                >i {
+                    margin-right: 8px;
+                }
+            }
+    
+            .number-box {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+            
+                .number {
+                    margin-right: 6px;
+                    font-weight: 700;
+                    font-size: 20px;
+                    line-height: 27px;
+                    color: #FFFFFF;
+                }
+            }
+    
+        }
+    }
+
+    
+}
+
+
+

@@ -1,0 +1,40 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g clip-path="url(#clip0_331_1627)">
+<rect width="1920" height="1080" fill="#0B2034"/>
+<mask id="mask0_331_1627" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+<rect width="1920" height="1080" fill="url(#pattern0)"/>
+</mask>
+<g mask="url(#mask0_331_1627)">
+<rect width="1920" height="1080" fill="#093148"/>
+</g>
+<rect y="703" width="1920" height="377" fill="url(#paint0_linear_331_1627)"/>
+<g filter="url(#filter0_f_331_1627)">
+<path d="M183.001 521C25.8246 622.703 -243 601 -347 443C-451 285 -290.569 -235.679 183.001 -433C879.001 -723 1485 -493 1777 -311C2069 -129 2133 133 1975 193C1817 253 1555 -5 1261 -33C967.001 -61 647.001 -51 499.001 103C351.001 257 319.001 433 183.001 521Z" fill="#007BA2" fill-opacity="0.4"/>
+</g>
+<rect width="1920" height="377" fill="url(#paint1_linear_331_1627)"/>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="0.0166667" height="0.0296296">
+<use xlink:href="#image0_331_1627" transform="scale(0.000130208 0.000231481)"/>
+</pattern>
+<filter id="filter0_f_331_1627" x="-577.316" y="-770.798" width="2836.39" height="1553.79" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_331_1627"/>
+</filter>
+<linearGradient id="paint0_linear_331_1627" x1="960" y1="703" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0B1A25" stop-opacity="0"/>
+<stop offset="1" stop-color="#0B1A25"/>
+</linearGradient>
+<linearGradient id="paint1_linear_331_1627" x1="960" y1="-132" x2="960" y2="377" gradientUnits="userSpaceOnUse">
+<stop offset="0.24165" stop-color="#012029"/>
+<stop offset="0.380208" stop-color="#012029"/>
+<stop offset="0.598958" stop-color="#095873" stop-opacity="0.35"/>
+<stop offset="1" stop-color="#0C232D" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="clip0_331_1627">
+<rect width="1920" height="1080" fill="white"/>
+</clipPath>
+<image id="image0_331_1627" width="128" height="128" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFaSURBVHgB7d2xDcAgDABBO/vvTETLCvfX0aKX5c47rvO8d0DfhFYAuALAFQCuAHAFgCsAXAHgCgBXALgCwBUArgBwBYArAFwB4AoAVwC4AsAVAK4AcAWAKwBcAeAKAFcAuALAFQCuAHAFgCsAXAHgCgBXALgCwBUArgBwBYArAFwB4AoAVwC4AsAVAK4AcAWAKwBcAeAKAFcAuALAFQCuAHAFgCsAXAHgCgBXALgCwBUArgBw92L2mbCaALgCwBUAbsf17j7kXzQBcAWAKwBcAeAKAFcAuALAFQCuAHAFgCsAXAHgCgBXALgCwBUArgBwBYArAFwB4AoAVwC4AsAVAK4AcAWAKwBcAeAKAFcAuALAFQCuAHAFgCsAXAHgCgBXALgCwBUArgBwBYArAFwB4AoAVwC4AsAVAK4AcAWAKwBcAeAKAFcAuALAFQCuAHAFgCsAXAHgCgD3A+UEA/3CEUcsAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>

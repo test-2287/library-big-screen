@@ -1,0 +1,34 @@
+.chart-container.week-borrow {
+    box-sizing: border-box;
+    padding: 8px 20px 22px 27px;
+    position: relative;
+
+    .legend {
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        > div {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            line-height: 16px;
+            color: rgba(140, 157, 200, 1);
+            &:first-child {
+                margin-right: 12px;
+            }
+            &::before {
+                content: '';
+                display: block;
+                margin-right: 8px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+            &.borrow::before { background-color: rgba(70, 100, 255, 1); }
+            &.return::before { background-color: rgba(49, 228, 252, 1); }
+
+        }
+    }
+}

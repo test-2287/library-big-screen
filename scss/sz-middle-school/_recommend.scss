@@ -1,0 +1,48 @@
+.module-main.recommend {
+    box-sizing: border-box;
+    padding: 24px 23px 22px;
+
+    display: flex;
+
+    // .swiper-box {
+    //     display: flex;
+        // overflow: hidden;
+        .swiper-slide {
+            width: 110px !important;
+        }
+
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            // margin-right: 14px;
+            width: 110px !important;
+            .image {
+                width: 100px;
+                height: 140px;
+                margin-bottom: 10px;
+            }
+            .name {
+                font-size: 14px;
+                line-height: 18px;
+                color: #FFFFFF;
+                margin-bottom: 4px;
+                width: 100px;
+                height: 20px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .author {
+                font-size: 14px;
+                line-height: 18px;
+                color: #4485AA;
+                width: 110px;
+                height: 20px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+        }
+    // }
+}

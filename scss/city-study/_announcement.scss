@@ -1,0 +1,48 @@
+.module-main.announcement {
+    box-sizing: border-box;
+    padding: 18px 27px 10px 21px;
+
+    // display: flex;
+    // flex-direction: column;
+    .title {
+        padding-bottom: 17px;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 25px;
+        color: #4BA9FF;
+        border-bottom: 1px solid #1E2F5B;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 7px;
+            height: 3px;
+            bottom: -1px;
+            left: 0;
+            background-color: rgba(58, 112, 252, 1);
+        }
+    }
+
+    .content-box {
+        // flex: 1;
+        box-sizing: border-box;
+        padding-top: 13px;
+        max-height: calc(100% - 58px - 10px);
+        color: #fff;
+        font-size: 14px;
+        line-height: 19px;
+        overflow: scroll;
+
+        b {
+            font-weight: bold;
+            color: rgba(75, 169, 255, 1);
+        }
+
+        scrollbar-width: none;
+        transition: all .1s ease-in-out;
+        &::-webkit-scrollbar {
+            display: none
+        }
+    }
+}

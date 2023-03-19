@@ -1,0 +1,43 @@
+.overview {
+    display: flex;
+    justify-content: space-between;
+
+    >div {
+        display: flex;
+        flex-direction: column;
+    }
+    .headcount, .book-count{
+        display: flex;
+        align-items: center;
+    }
+
+    .headcount {
+        margin-bottom: 15px;
+    }
+
+    .label {
+        margin-right: 34px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 27px;
+        color: #99BCFF
+    }
+
+    .number-box {
+        display: flex;
+        .digit {
+            margin-right: 10px;
+            width: 37px;
+            height: 52px;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 52px;
+            text-align: center;
+            color: #202596;
+            background-color: #00062D;;
+            &.light {
+                color: #fff;
+            }
+        }
+    }
+}

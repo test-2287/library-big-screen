@@ -1,0 +1,466 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/sz-middle-school/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="top-bar">
+            <div class="date-time">
+                <div class="time">
+                    <span>2022年12月12日</span>
+                    <span>星期三</span>
+                    <i class="icon-clock"></i>
+                    <span>10:20</span>
+                </div>
+            </div>
+            <div class="today-weather">
+                <span class="label">今日天气</span>
+                <i class="icon-cloud"></i>
+                <span class="info">晴转多云 5°-10°C</span>
+            </div>
+        </div>
+
+        <div class="screen-container">
+            <div class="module-container overview">
+                <div class="data-box">
+                    <div>
+                        <span class="label">今日到馆总人数</span>
+                        <span class="number">397</span>
+                    </div>
+                    <div>
+                        <span class="label">今日借阅总数量</span>
+                        <span class="number">397</span>
+                    </div>
+                    <div>
+                        <span class="label">馆藏图书统计</span>
+                        <span class="number">397</span>
+                    </div>
+                    <div>
+                        <span class="label">累计统计</span>
+                        <span class="number">397</span>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <!-- <i class="icon-video"></i> -->
+                    <video :src="videoArr[curVideo]" :autoplay="true" controls @ended="videoEnd"></video>
+                </div>
+            </div>
+
+            <div class="module-container book">
+                <div class="module-header">
+                    <i></i>
+                    <span>馆藏图书统计</span>
+                </div>
+                <div class="module-main book">
+                    <div class="chart-container">
+                        <div class="center">
+                            <span class="label">馆藏总数</span>
+                            <span class="number">126,618</span>
+                        </div>
+                        <v-chart :option="bookDataOptions" class="chart"></v-chart>
+                    </div>
+                    <div class="chart-info">
+                        <div class="item">
+                            <div class="label-box">
+                                <i><i></i></i>
+                                <span>泥岗</span>
+                            </div>
+                            <div class="number-box">
+                                <span class="number">232435</span>
+                                <span>册</span>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <div class="label-box">
+                                <i><i></i></i>
+                                <span>东门</span>
+                            </div>
+                            <div class="number-box">
+                                <span class="number">232435</span>
+                                <span>册</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="label-box">
+                                <i><i></i></i>
+                                <span>初中</span>
+                            </div>
+                            <div class="number-box">
+                                <span class="number">232435</span>
+                                <span>册</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="module-container borrow">
+                <div class="module-header">
+                    <i></i>
+                    <span>图书馆借阅统计</span>
+                </div>
+                <div class="module-main borrow">
+                    <div class="chart-container">
+                        <v-chart :option="borrowDataOptions" class="chart"></v-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-container campus">
+                <div class="module-header">
+                    <i></i>
+                    <span>泥岗校区</span>
+                    <div class="day-year-brief">
+                        <div>
+                            <span>今日到馆</span>
+                            <span class="number">68</span>
+                        </div>
+                        <div>
+                            <span>今年到馆</span>
+                            <span class="number">12,68</span>
+                        </div>
+                        <div>
+                            <span>今日借还</span>
+                            <span class="number">32</span>
+                        </div>
+                        <div>
+                            <span>年度借还</span>
+                            <span class="number">53,92</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-main campus">
+                    <div class="chart-container day-data">
+                        <div class="chart-header">
+                            <div class="chart-name">
+                                <i class="icon"></i>
+                                <span>日借还量（人）</span>
+                            </div>
+                            <div class="chart-legend">
+                                <span>借书</span>
+                                <span>还书</span>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <v-chart :option="campusDayDataOptions" class="chart"></v-chart>
+                        </div>
+                    </div>
+                    <div class="chart-container year-data">
+                        <div class="chart-header">
+                            <div class="chart-name">
+                                <i class="icon"></i>
+                                <span>年借还量（人）</span>
+                            </div>
+                            <div class="chart-legend">
+                                <span>借书</span>
+                                <span>还书</span>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <v-chart :option="campusYearDataOptions" class="chart"></v-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-container announcement">
+                <div class="module-header">
+                    <i></i>
+                    <span>通知公告</span>
+                </div>
+                <div class="module-main announcement">
+                    <div class="date">2022年9月5日</div>
+                    <div class="title">图书馆关于2022年中秋节开放安排的通知</div>
+                    <div class="content-box">
+                        <div class="content" ref="announcementContent">
+                            根据《国务院办公厅关于2022年部分节假日安排的通知》(国办发明电〔2021〕11号)精神，结合我馆实际，现将2022年中秋节开放安排的有关事项通知如下：
+                            一、开放区域和开放时间：
+                            9月10日(周六)：一楼中文现刊借阅室、中文报纸阅览室、读者自修室、二楼开架图书借阅室、临时读者自修室开放，开放时间为9:00—17:30。其他区域不开放。
+                            大学路馆舍、孤山路馆舍暂不开放。
+                            二、出入馆流程、疫情防控措施等按照我馆发布的最新通知要求执行。
+                            特此通知。
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="module-container activity">
+                <div class="module-header">
+                    <i></i>
+                    <span>馆内活动</span>
+                </div>
+                <div class="module-main activity">
+                    <div class="list">
+                        <div class="image"></div>
+                        <div class="desc">
+                            <div class="title">中华传统百部经典《世说新语》</div>
+                            <span class="time">
+                                <span>活动时间： </span>
+                                <span>2023年3月12日 14:00 到 2023年4月16日 16:00</span>
+                            </span>
+                            <span class="location">活动地点： 图书馆二楼视听室</span>
+                        </div>
+                    </div>
+
+                    <div class="list">
+                        <div class="image"></div>
+                        <div class="desc">
+                            <div class="title">中华传统百部经典《世说新语》</div>
+                            <span class="time">
+                                <span>活动时间： </span>
+                                <span>2023年3月12日 14:00 到 2023年4月16日 16:00</span>
+                            </span>
+                            <span class="location">活动地点： 图书馆二楼视听室</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-container recommend">
+                <div class="module-header">
+                    <i></i>
+                    <span>本月新书推荐</span>
+                </div>
+                <div class="module-main recommend">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="book-item">
+                                    <div class="image"></div>
+                                    <div class="name">遇见动物的时刻</div>
+                                    <div class="author">[美] 克雷格·查尔兹</div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="book-item">
+                                    <div class="image"></div>
+                                    <div class="name">遇见动物的时刻</div>
+                                    <div class="author">[美] 克雷格·查尔兹</div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="book-item">
+                                    <div class="image"></div>
+                                    <div class="name">遇见动物的时刻</div>
+                                    <div class="author">[美] 克雷格·查尔兹</div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="book-item">
+                                    <div class="image"></div>
+                                    <div class="name">遇见动物的时刻</div>
+                                    <div class="author">[美] 克雷格·查尔兹</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-container rank">
+                <div class="module-header rank">
+                    <div class="lib-borrow" :class="{'active': libListActive}">图书馆借阅排行榜</div>
+                    <div class="reader-borrow" :class="{'active': !libListActive}">读者借阅排行榜</div>
+                </div>
+                <div class="module-main lib-list" :class="{'active': libListActive}">
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">爱德华的奇妙之旅</span>
+                                <span class="book-author">[美] 凯特·迪卡米洛</span>
+                            </div>
+                        </div>
+
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+
+                    </div>
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">爱德华的奇妙之旅</span>
+                                <span class="book-author">[美] 凯特·迪卡米洛</span>
+                            </div>
+                        </div>
+
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+
+                    </div>
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">爱德华的奇妙之旅</span>
+                                <span class="book-author">[美] 凯特·迪卡米洛</span>
+                            </div>
+                        </div>
+
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+
+                    </div>
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">爱德华的奇妙之旅</span>
+                                <span class="book-author">[美] 凯特·迪卡米洛</span>
+                            </div>
+                        </div>
+
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+
+                    </div>
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">爱德华的奇妙之旅</span>
+                                <span class="book-author">[美] 凯特·迪卡米洛</span>
+                            </div>
+                        </div>
+
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="module-main reader-list" :class="{'active': !libListActive}">
+
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">聪明家长的杠杆养育法</span>
+                                <span class="book-author">齐大辉</span>
+                            </div>
+                        </div>
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">聪明家长的杠杆养育法</span>
+                                <span class="book-author">齐大辉</span>
+                            </div>
+                        </div>
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">聪明家长的杠杆养育法</span>
+                                <span class="book-author">齐大辉</span>
+                            </div>
+                        </div>
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">聪明家长的杠杆养育法</span>
+                                <span class="book-author">齐大辉</span>
+                            </div>
+                        </div>
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="left">
+                            <div class="icon">
+                                <span>1</span>
+                            </div>
+                            <div class="book-info">
+                                <span class="book-name">聪明家长的杠杆养育法</span>
+                                <span class="book-author">齐大辉</span>
+                            </div>
+                        </div>
+                        <div class="borrow-num">
+                            <span class="label">借阅</span>
+                            <span class="number">86</span>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-echarts@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./js/sz-middle-school.js"></script>
+</body>
+
+</html>

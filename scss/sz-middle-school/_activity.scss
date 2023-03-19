@@ -1,0 +1,35 @@
+.module-main.activity {
+    box-sizing: border-box;
+    padding: 20px 30px 27px 24px;
+    display: flex;
+    flex-direction: column;
+    .list {
+        display: flex;;
+        justify-content: space-between;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        .image {
+            width: 80px;
+            height: 80px;
+            margin-right: 19px;
+        }
+        .desc {
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 22px;
+                color: #FFFFFF;
+                margin-bottom: 6px;
+            }
+            .time, .location {
+                font-size: 14px;
+                line-height: 19px;
+                color: #4485AA;
+                margin-bottom: 1px;
+            }
+        }
+    }
+}

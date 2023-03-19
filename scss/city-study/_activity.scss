@@ -1,0 +1,56 @@
+.module-main.activity {
+    box-sizing: border-box;
+    padding: 23px;
+    padding-right: 32px;
+
+    // display: flex;
+    // flex-direction: column;
+
+    height: 380px;
+    overflow: hidden;
+
+    .swiper.activity-list{
+        // width: 386px;
+        height: 334px;
+        // overflow: hidden;
+    }
+    .swiper-wrapper {
+        flex-direction: column;
+    }
+    .swiper-slide {
+        height: 99px !important;
+    }
+    .activity-item {
+        display: flex;
+        height: 99px;
+        .image {
+            width: 93px;
+            height: 93px;
+            margin-right: 16px;
+        }
+        .info {
+            width: 256px;
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 27px;
+                color: #FFFFFF;
+                margin-bottom: 5px;
+            }
+            > span {
+                max-width: 256px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 14px;
+                line-height: 19px;
+                color: #80A3FF;
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}

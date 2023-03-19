@@ -1,0 +1,30 @@
+.middle-center.video-box {
+    background-image: url('/s-video-bg.svg'), url('/s-video-l.svg'), url('/s-video-l.svg');
+    background-repeat: no-repeat;
+    background-position: center, left center, right center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    i.icon-video {
+        z-index: 1;
+        position: absolute;
+        display: block;
+        width: 80px;
+        height: 80px;
+        background-image: url('/m-video-icon.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    > video {
+        width: 812px;
+        height: 458px;
+    }
+
+
+}

@@ -1,0 +1,67 @@
+#app {
+    width: 1920px;
+    height: 1080px;
+    background-color: #061B7F;
+    background: url('/s-bg.svg') no-repeat;
+    background-size: cover;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.screen-container {
+    box-sizing: border-box;
+    display: grid;
+    height: calc(100% - 94px);
+    padding: 23px 40px 40px;
+    grid-template-columns: 1fr 870px 1fr ;
+    grid-column-gap: 43px;
+    grid-template-areas: "left center right";
+
+    .screen-right {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-row-gap: 25px;
+    }
+
+    .screen-left {
+        display: grid;
+        grid-template-rows: 440px 1fr;
+        grid-row-gap: 20px;
+    }
+
+    .screen-middle {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 139px 514px 1fr;
+        grid-row-gap: 19px;
+        grid-template-areas: 
+        "overview overview" 
+        "video_box video_box" 
+        "announcement rank";
+        .overview {
+            grid-area: overview;
+        }
+        .video-box {
+            grid-area: video_box;
+        }
+        .announcement {
+            grid-area: announcement;
+        }
+        .rank {
+            grid-area: rank;
+            justify-self: end;
+        }
+    }
+
+}
+
+@import './topBar.scss';
+@import './module.scss';
+@import './dailyTraffic.scss';
+@import './weekBorrow.scss';
+@import './dailyRegister.scss';
+@import './announcement.scss';
+@import './rank.scss';
+@import './recommend.scss';
+@import './activity.scss';
+@import './overview.scss';
+@import './video.scss';

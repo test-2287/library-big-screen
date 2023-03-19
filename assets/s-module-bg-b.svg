@@ -1,0 +1,14 @@
+<svg width="420" height="247" viewBox="0 0 420 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_416_1452" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H420V236.213L409.213 247H10.2133L0 236.787V0Z"/>
+</mask>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H420V236.213L409.213 247H10.2133L0 236.787V0Z" fill="black" fill-opacity="0.3"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H420V236.213L409.213 247H10.2133L0 236.787V0Z" fill="url(#paint0_linear_416_1452)"/>
+<path d="M420 0H421V-1H420V0ZM0 0V-1H-1V0H0ZM420 236.213L420.707 236.92L421 236.627V236.213H420ZM409.213 247V248H409.627L409.92 247.707L409.213 247ZM10.2133 247L9.50616 247.707L9.79905 248H10.2133V247ZM0 236.787H-1V237.201L-0.707107 237.494L0 236.787ZM420 -1H0V1H420V-1ZM421 236.213V0H419V236.213H421ZM409.92 247.707L420.707 236.92L419.293 235.506L408.506 246.293L409.92 247.707ZM10.2133 248H409.213V246H10.2133V248ZM-0.707107 237.494L9.50616 247.707L10.9204 246.293L0.707107 236.08L-0.707107 237.494ZM-1 0V236.787H1V0H-1Z" fill="#4069FC" fill-opacity="0.6" mask="url(#path-1-inside-1_416_1452)"/>
+<defs>
+<linearGradient id="paint0_linear_416_1452" x1="175" y1="-9.88" x2="202.322" y2="247.814" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1A75FF" stop-opacity="0.45"/>
+<stop offset="0.325" stop-color="#1A75FF" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

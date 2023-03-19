@@ -1,0 +1,71 @@
+#app {
+    width: 1920px;
+    height: 1080px;
+    background-color: #061B7F;
+    background: url('/m-bg.svg') no-repeat;
+    background-size: cover;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.screen-container {
+    box-sizing: border-box;
+    display: grid;
+    height: calc(100% - 87px);
+    padding: 30px 29px 38px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-areas:
+        "overview overview book borrow"
+        "overview overview campus campus"
+        "announcement activity recommend rank";
+
+    .overview {
+        grid-area: overview;
+    }
+
+    .book {
+        grid-area: book;
+        justify-self: end;
+    }
+
+    .borrow {
+        grid-area: borrow;
+        justify-self: end;
+    }
+
+    .campus {
+        grid-area: campus;
+        justify-self: end;
+    }
+
+    .accouncement {
+        grid-area: accouncement;
+    }
+
+    .activity {
+        grid-area: activity;
+    }
+
+    .recommend {
+        grid-area: recommend;
+        justify-self: end;
+    }
+
+    .rank {
+        grid-area: rank;
+        justify-self: end;
+    }
+
+}
+
+@import './topBar.scss';
+@import './module.scss';
+@import './bookNum.scss';
+@import './borrowData.scss';
+@import './campus.scss';
+@import './overview.scss';
+@import './announcement.scss';
+@import './activity.scss';
+@import './recommend.scss';
+@import './rank.scss';

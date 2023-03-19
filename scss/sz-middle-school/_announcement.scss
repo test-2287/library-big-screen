@@ -1,0 +1,55 @@
+.module-main.announcement {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 22px;
+    .date {
+        padding-left: 11px;
+        margin-bottom: 12px;
+        width: 117px;
+        height: 22px;
+        background-image: url('/m-announce-flag.svg');
+        background-repeat: no-repeat;
+        background-size: left top;
+
+        font-size: 14px;
+        line-height: 22px;
+        color: #4485AA;
+        vertical-align: middle;
+        position: relative;
+        &::before {
+            position: absolute;
+            content: '';
+            width: 2px;
+            height: 22px;
+            background-color: rgba(23, 175, 222, 1);
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .title {
+        margin-bottom: 9px;
+        font-size: 18px;
+        line-height: 22px;
+        color: #2B98BA;
+    }
+
+    .content-box {
+        height: 133px;
+        max-height: 133px;
+        overflow: scroll;
+        scrollbar-width: none;
+        transition: all 0.1s ease-in-out;
+        &::-webkit-scrollbar {
+            display: none
+        }
+    }
+
+    .content {
+        font-size: 14px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+}
