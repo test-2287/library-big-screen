@@ -42,11 +42,12 @@ const app = createApp({
         const videoArr = ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"]
-        let curVideo = 0
+        const curVideo = ref(0)
         const videoEnd = () => {
-            curVideo++;
-            if (curVideo >= videoArr.length) {
-                curVideo = 0
+            console.log('aaaa');
+            curVideo.value++;
+            if (curVideo.value >= videoArr.length) {
+                curVideo.value = 0
             }
         }
 
