@@ -151,12 +151,14 @@
 
 .module-header:not(.rank) {
   height: 41px;
-  padding: 3px 0 8px 17px;
+  padding: 3px 0 6px 17px;
   box-sizing: border-box;
   background-image: url("../../assets/m-module-header.svg"), url("../../assets/m-module-header-r.svg"), url("../../assets/m-module-header-r-b.svg");
   background-repeat: no-repeat;
   background-position: 1px 1px, right bottom, right bottom;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .module-header:not(.rank)::before {
@@ -198,7 +200,7 @@
   padding-right: 4px;
   font-style: italic;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 29px;
   background: linear-gradient(180deg, #FFFFFF 61.36%, rgba(255, 255, 255, 0) 100%);
   -webkit-background-clip: text;
