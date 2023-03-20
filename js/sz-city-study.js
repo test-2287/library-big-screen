@@ -259,7 +259,6 @@ const app = createApp({
                 },
                 xAxis: {
                     type: 'category',
-                    inverse: true,
                     axisTick: {
                         show: false
                     },

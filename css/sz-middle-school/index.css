@@ -195,6 +195,7 @@
 }
 
 .module-header:not(.rank) > span {
+  padding-right: 4px;
   font-style: italic;
   font-weight: bold;
   font-size: 22px;
@@ -617,6 +618,9 @@
   width: 80px;
   height: 80px;
   margin-right: 19px;
+  background-image: url("../../assets/m-image-activity.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .module-main.activity .list .desc {
@@ -660,6 +664,9 @@
   width: 100px;
   height: 140px;
   margin-bottom: 10px;
+  background-image: url("../../assets/m-image-book.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .module-main.recommend .book-item .name {
