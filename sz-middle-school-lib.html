@@ -116,26 +116,26 @@
                 </div>
             </div>
 
-            <div class="module-container campus">
+            <div class="module-container campus" :class="{'hide': hideCampus}" v-cloak>
                 <div class="module-header">
                     <i></i>
-                    <span>泥岗校区</span>
+                    <span>{{campus[campusIndex]}}校区</span>
                     <div class="day-year-brief">
                         <div>
                             <span>今日到馆</span>
-                            <span class="number">68</span>
+                            <span class="number">{{campusData[campusIndex]['dayVisit']}}</span>
                         </div>
                         <div>
                             <span>今年到馆</span>
-                            <span class="number">12,68</span>
+                            <span class="number">{{campusData[campusIndex]['yearVisit']}}</span>
                         </div>
                         <div>
                             <span>今日借还</span>
-                            <span class="number">32</span>
+                            <span class="number">{{campusData[campusIndex]['dayCirculation']}}</span>
                         </div>
                         <div>
                             <span>年度借还</span>
-                            <span class="number">53,92</span>
+                            <span class="number">{{campusData[campusIndex]['yearCirculation']}}</span>
                         </div>
                     </div>
                 </div>

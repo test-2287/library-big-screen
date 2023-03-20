@@ -307,6 +307,18 @@
   height: 100%;
 }
 
+[v-cloak] {
+  opacity: 0;
+}
+
+.module-container.campus {
+  transition: all 1s ease-in-out;
+}
+
+.module-container.campus.hide {
+  opacity: 0;
+}
+
 .module-container.campus .module-header {
   position: relative;
 }

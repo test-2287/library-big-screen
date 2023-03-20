@@ -1,58 +1,10 @@
-const { createApp, ref, onMounted, onUnmounted, nextTick } = Vue
+const { createApp, ref, reactive, onMounted, onUnmounted, nextTick } = Vue
 
 const app = createApp({
     // template: '#app',
     setup() {
         const bookDataOptions = ref(null)
-        const borrowDataOptions = ref(null)
-        const campusDayDataOptions = ref(null)
-        const campusYearDataOptions = ref(null)
-
-        const announcementContent = ref(null)
-        const scrollContent = () => {
-            let contentScrollTimer = null
-            const contentDom = announcementContent.value
-            const contentParent = contentDom.parentElement
-            const contentHeight = contentDom.clientHeight
-            const parentHeight = contentParent.clientHeight
-            let scroll = 0
-            if (contentHeight <= parentHeight) return
-            contentScrollTimer = setInterval(() => {
-                if (scroll + parentHeight < contentHeight) {
-                    contentParent.scrollTop = scroll++
-                } else {
-                    contentParent.scrollTop = contentDom.scrollHeight
-                    clearInterval(contentScrollTimer)
-                    scroll = 0
-                    setTimeout(() => {
-                        scrollContent(announcementContent)    
-                    }, 1000)
-                }
-            }, 100)
-        }
-
-        
-        let libListActive = ref(true)
-        const toggleLibListActive = () => {
-            setInterval(() => {
-                libListActive.value = !libListActive.value
-            }, 1800)  //180000
-        }
-
-        const videoArr = ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"]
-        const curVideo = ref(0)
-        const videoEnd = () => {
-            console.log('aaaa');
-            curVideo.value++;
-            if (curVideo.value >= videoArr.length) {
-                curVideo.value = 0
-            }
-        }
-
         onMounted(() => {
-
             bookDataOptions.value = {
                 top: 'center',
                 left: 'center',
@@ -112,7 +64,10 @@ const app = createApp({
                     }
                 ]
             }
+        })
 
+        const borrowDataOptions = ref(null)
+        onMounted(() => {
             borrowDataOptions.value = {
                 grid: {
                     left: 0,
@@ -173,242 +128,665 @@ const app = createApp({
                         label: {
                             show: true,
                             fontSize: 14,
-                            position: 'insideRight',
-                            offset: [-13, 0]
+                            position: 'inside',
+                        },
+                        markPoint: {
+                            symbol: 'rect',
+                            symbolSize: [8, 18],
+                            data: [
+                                {
+                                    coord: [457, 0],
+                                    itemStyle: {
+                                        color: 'rgba(76, 210, 43, 1)'
+                                    },
+                                },
+                                {
+                                    coord: [232, 1],
+                                    itemStyle: {
+                                        color: 'rgba(35, 128, 238, 1)'
+                                    },
+                                },
+                                {
+                                    coord: [567, 2],
+                                    itemStyle: {
+                                        color: 'rgba(37, 190, 238, 1)'
+                                    },
+                                },
+                            ],
                         },
                         data: [
                             {
                                 value: 457,
                                 itemStyle: {
                                     color: 'rgba(76, 210, 43, 0.5)',
-                                },
+                                }
                             },
                             {
                                 value: 232,
                                 itemStyle: {
                                     color: 'rgba(35, 128, 238, 0.5)',
-                                },
+                                }
 
                             },
                             {
                                 value: 567,
                                 itemStyle: {
                                     color: 'rgba(37, 190, 238, 0.5)',
-                                },
+                                }
                             }
                         ],
-                    },
-                    {
-                        type: 'custom',
-                        renderItem: function (params, api) {
-                            const categoryIndex = api.value(0);
-                            const value = api.value(1);
-                            const color = api.value(2);
-                            const point = api.coord([value, categoryIndex]);
-
-                            return {
-                                type: 'rect',
-                                shape: {
-                                    x: point[0] - 8,
-                                    y: point[1] - 9,
-                                    width: 8,
-                                    height: 18
-                                },
-                                style: {
-                                    fill: color
-                                }
-                            };
-                        },
-                        data: [
-                            { value: [0, 457, 'rgba(76, 210, 43, 1)'] },
-                            { value: [1, 232, 'rgba(35, 128, 238, 1)'] },
-                            { value: [2, 567, 'rgba(37, 190, 238, 1)'] }
-                        ],
                     }
                 ]
             }
+        })
 
-            campusDayDataOptions.value = {
-                grid: {
-                    left: 0,
-                    bottom: 0,
-                    width: 405,
-                    height: 153,
-                    containLabel: true
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLine: {
-                        show: true,
-                        onZero: false,
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
+        const campus = ['泥岗', '东门', '初中']
+        const campusData = reactive([
+            {
+                dayVisit: 32,
+                yearVisit: 1268,
+                dayCirculation: 32,
+                yearCirculation: 5392,
+                campusDayDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 405,
+                        height: 153,
+                        containLabel: true
                     },
-                    axisLabel: {
-                        color: 'rgba(75, 146, 186, 1)',
-                        fontSize: 12,
-                        margin: 6
-                    },
-                    splitLine: {
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
-                    },
-                },
-                xAxis: {
-                    type: 'category',
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        color: 'rgba(75, 146, 186, 1)',
-                        fontSize: 12,
-                        margin: 12
-                    },
-                    axisLine: {
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
-                    },
-                    data: ['10', '11', '12', '13', '14', '15'],
-                },
-                series: [
-                    {
-                        name: '借书',
-                        type: 'bar',
-                        barWidth: 16,
-                        label: {
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
                             show: true,
-                            fontSize: 11,
-                            position: 'top',
-                            color: 'rgba(52, 199, 232, 1)',
+                            onZero: false,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
                         },
-                        markPoint: {
-                            symbol: 'rect',
-                            symbolSize: [16, 5],
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 6
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['10', '11', '12', '13', '14', '15'],
+                    },
+                    series: [
+                        {
+                            name: '借书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(52, 199, 232, 1)',
+                            },
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(52, 199, 232, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 46] },
+                                    { coord: [1, 115] },
+                                    { coord: [2, 25] },
+                                    { coord: [3, 55] },
+                                    { coord: [4, 45] },
+                                    { coord: [5, 101] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(52, 199, 232, 0.2)'
+                            },
+                            data: [46, 115, 25, 55, 45, 101],
+                        },
+                        {
+                            name: '还书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(76, 210, 43, 1)',
+                            },
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(76, 210, 43, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 20] },
+                                    { coord: [1, 45] },
+                                    { coord: [2, 32] },
+                                    { coord: [3, 62] },
+                                    { coord: [4, 22] },
+                                    { coord: [5, 44] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(76, 210, 43, 0.2)'
+                            },
+                            data: [20, 45, 32, 62, 22, 44],
+                        }
+    
+                    ]
+                },
+                campusYearDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 400,
+                        height: 153,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['1', '2', '3', '4', '5', '6', '7']
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitNumber: 5,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12,
+                            formatter: function (value) {
+                                return Math.round(value) + 'k';
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            data: [0.8, 2.9, 3.4, 2, 2.9, 1.6, 2.8],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(52, 199, 232, 1)'
-                            },
-                            data: [
-                                { coord: [0, 46] },
-                                { coord: [1, 115] },
-                                { coord: [2, 25] },
-                                { coord: [3, 55] },
-                                { coord: [4, 45] },
-                                { coord: [5, 101] },
-                            ],
+                            }
                         },
-                        itemStyle: {
-                            color: 'rgba(52, 199, 232, 0.2)'
-                        },
-                        data: [46, 115, 25, 55, 45, 101],
-                    },
-                    {
-                        name: '还书',
-                        type: 'bar',
-                        barWidth: 16,
-                        label: {
-                            show: true,
-                            fontSize: 11,
-                            position: 'top',
-                            color: 'rgba(76, 210, 43, 1)',
-                        },
-                        markPoint: {
-                            symbol: 'rect',
-                            symbolSize: [16, 5],
+                        {
+                            data: [1.5, 2.2, 2, 2.9, 2.5, 2.6, 2.9],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(76, 210, 43, 1)'
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                dayVisit: 68,
+                yearVisit: 1268,
+                dayCirculation: 32,
+                yearCirculation: 5392,
+                campusDayDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 405,
+                        height: 153,
+                        containLabel: true
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
+                            show: true,
+                            onZero: false,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 6
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['10', '11', '12', '13', '14', '15'],
+                    },
+                    series: [
+                        {
+                            name: '借书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(52, 199, 232, 1)',
                             },
-                            data: [
-                                { coord: [0, 20] },
-                                { coord: [1, 45] },
-                                { coord: [2, 32] },
-                                { coord: [3, 62] },
-                                { coord: [4, 22] },
-                                { coord: [5, 44] },
-                            ],
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(52, 199, 232, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 50] },
+                                    { coord: [1, 150] },
+                                    { coord: [2, 30] },
+                                    { coord: [3, 25] },
+                                    { coord: [4, 70] },
+                                    { coord: [5, 120] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(52, 199, 232, 0.2)'
+                            },
+                            data: [50, 150, 30, 25, 70, 120],
                         },
-                        itemStyle: {
-                            color: 'rgba(76, 210, 43, 0.2)'
+                        {
+                            name: '还书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(76, 210, 43, 1)',
+                            },
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(76, 210, 43, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 40] },
+                                    { coord: [1, 20] },
+                                    { coord: [2, 55] },
+                                    { coord: [3, 38] },
+                                    { coord: [4, 56] },
+                                    { coord: [5, 44] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(76, 210, 43, 0.2)'
+                            },
+                            data: [40, 20, 55, 38, 56, 44],
+                        }
+    
+                    ]
+                },
+                campusYearDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 400,
+                        height: 153,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
                         },
-                        data: [20, 45, 32, 62, 22, 44],
-                    }
-
-                ]
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['1', '2', '3', '4', '5', '6', '7']
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitNumber: 5,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12,
+                            formatter: function (value) {
+                                return Math.round(value) + 'k';
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            data: [2.5, 4.7, 4.6, 2.1, 3.4, 6.7, 2 ],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
+                            itemStyle: {
+                                color: 'rgba(52, 199, 232, 1)'
+                            }
+                        },
+                        {
+                            data: [1.2, 2.4, 4.3, 2.5, 3.3, 5.6, 6],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
+                            itemStyle: {
+                                color: 'rgba(76, 210, 43, 1)'
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                dayVisit: 80,
+                yearVisit: 1268,
+                dayCirculation: 32,
+                yearCirculation: 5392,
+                campusDayDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 405,
+                        height: 153,
+                        containLabel: true
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
+                            show: true,
+                            onZero: false,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 6
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['10', '11', '12', '13', '14', '15'],
+                    },
+                    series: [
+                        {
+                            name: '借书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(52, 199, 232, 1)',
+                            },
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(52, 199, 232, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 48] },
+                                    { coord: [1, 123] },
+                                    { coord: [2, 77] },
+                                    { coord: [3, 45] },
+                                    { coord: [4, 69] },
+                                    { coord: [5, 130] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(52, 199, 232, 0.2)'
+                            },
+                            data: [48, 123, 77, 45, 69, 130],
+                        },
+                        {
+                            name: '还书',
+                            type: 'bar',
+                            barWidth: 16,
+                            label: {
+                                show: true,
+                                fontSize: 11,
+                                position: 'top',
+                                color: 'rgba(76, 210, 43, 1)',
+                            },
+                            markPoint: {
+                                symbol: 'rect',
+                                symbolSize: [16, 5],
+                                itemStyle: {
+                                    color: 'rgba(76, 210, 43, 1)'
+                                },
+                                data: [
+                                    { coord: [0, 60] },
+                                    { coord: [1, 30] },
+                                    { coord: [2, 28] },
+                                    { coord: [3, 60] },
+                                    { coord: [4, 39] },
+                                    { coord: [5, 56] },
+                                ],
+                            },
+                            itemStyle: {
+                                color: 'rgba(76, 210, 43, 0.2)'
+                            },
+                            data: [60, 30, 28, 60, 39, 56],
+                        }
+    
+                    ]
+                },
+                campusYearDataOptions: {
+                    grid: {
+                        left: 0,
+                        bottom: 0,
+                        width: 400,
+                        height: 153,
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        data: ['1', '2', '3', '4', '5', '6', '7']
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitNumber: 5,
+                        axisLine: {
+                            show: true,
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        },
+                        axisLabel: {
+                            color: 'rgba(75, 146, 186, 1)',
+                            fontSize: 12,
+                            margin: 12,
+                            formatter: function (value) {
+                                return Math.round(value) + 'k';
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: 'rgba(24, 127, 172, 0.2)'
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            data: [5, 6, 7, 6, 5, 6, 5],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
+                            itemStyle: {
+                                color: 'rgba(52, 199, 232, 1)'
+                            }
+                        },
+                        {
+                            data: [2, 3, 4, 3, 1, 3, 1],
+                            type: 'line',
+                            symbol:'circle',
+                            symbolSize: 6,
+                            itemStyle: {
+                                color: 'rgba(76, 210, 43, 1)'
+                            }
+                        }
+                    ]
+                }
             }
-
-            campusYearDataOptions.value = {
-                grid: {
-                    left: 0,
-                    bottom: 0,
-                    width: 400,
-                    height: 153,
-                    containLabel: true
-                },
-                xAxis: {
-                    type: 'category',
-                    axisLabel: {
-                        color: 'rgba(75, 146, 186, 1)',
-                        fontSize: 12,
-                        margin: 12
-                    },
-                    axisLine: {
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
-                    },
-                    data: ['1', '2', '3', '4', '5', '6', '7']
-                },
-                yAxis: {
-                    type: 'value',
-                    min:0,
-                    max:5,
-                    splitNumber: 5,
-                    axisLine: {
-                        show: true,
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
-                    },
-                    axisLabel: {
-                        color: 'rgba(75, 146, 186, 1)',
-                        fontSize: 12,
-                        margin: 12,
-                        formatter: function (value) {
-                            return Math.round(value) + 'k';
-                        }
-                    },
-                    splitLine: {
-                        lineStyle: {
-                            color: 'rgba(24, 127, 172, 0.2)'
-                        }
+        ])
+        const campusDayDataOptions = ref(null)
+        const campusYearDataOptions = ref(null)
+        let campusIndex = ref(0)
+        let hideCampus = ref(false)
+        onMounted(() => {
+            campusDayDataOptions.value = campusData[campusIndex.value].campusDayDataOptions
+            campusYearDataOptions.value = campusData[campusIndex.value].campusYearDataOptions
+            setInterval(() => {
+                hideCampus.value = true
+                setTimeout(() => {
+                    if (campusIndex.value >= campus.length -1 ) {
+                        campusIndex.value = 0
+                    } else {
+                        campusIndex.value++
                     }
-                },
-                series: [
-                    {
-                        data: [0.8, 2.9, 3.4, 2, 2.9, 1.6, 2.8],
-                        type: 'line',
-                        symbol:'circle',
-                        symbolSize: 6,
-                        itemStyle: {
-                            color: 'rgba(52, 199, 232, 1)'
-                        }
-                    },
-                    {
-                        data: [1.5, 2.2, 2, 2.9, 2.5, 2.6, 2.9],
-                        type: 'line',
-                        symbol:'circle',
-                        symbolSize: 6,
-                        itemStyle: {
-                            color: 'rgba(76, 210, 43, 1)'
-                        }
-                    }
-                ]
-            };
+                    campusDayDataOptions.value = campusData[campusIndex.value].campusDayDataOptions
+                    campusYearDataOptions.value = campusData[campusIndex.value].campusYearDataOptions
+                    hideCampus.value = false
+                }, 1000) // 这里的时间=transition时间
+            }, 5 * 1000)  // 这里的时间是校区切换时间
+        })
 
+        const announcementContent = ref(null)
+        const scrollContent = () => {
+            let contentScrollTimer = null
+            const contentDom = announcementContent.value
+            const contentParent = contentDom.parentElement
+            const contentHeight = contentDom.clientHeight
+            const parentHeight = contentParent.clientHeight
+            let scroll = 0
+            if (contentHeight <= parentHeight) return
+            contentScrollTimer = setInterval(() => {
+                if (scroll + parentHeight < contentHeight) {
+                    contentParent.scrollTop = scroll++
+                } else {
+                    contentParent.scrollTop = contentDom.scrollHeight
+                    clearInterval(contentScrollTimer)
+                    scroll = 0
+                    setTimeout(() => {
+                        scrollContent(announcementContent)    
+                    }, 1000)
+                }
+            }, 100)
+        }
+        onMounted(() => {
             scrollContent(announcementContent)
+        })
+
+        
+        let libListActive = ref(true)
+        const toggleLibListActive = () => {
+            setInterval(() => {
+                libListActive.value = !libListActive.value
+            }, 1800)  //180000
+        }
+        onMounted(() => {
             toggleLibListActive()
+        })
+
+
+        onMounted(() => {
             new Swiper('.swiper', {
                 slidesPerView: 'auto',
                 spaceBetween: 14,
@@ -418,11 +796,26 @@ const app = createApp({
             })
         })
 
-
+        const videoArr = ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"]
+        const curVideo = ref(0)
+        const videoEnd = () => {
+            console.log('aaaa');
+            curVideo.value++;
+            if (curVideo.value >= videoArr.length) {
+                curVideo.value = 0
+            }
+        }
 
         return {
             bookDataOptions,
             borrowDataOptions,
+
+            hideCampus,
+            campus,
+            campusIndex,
+            campusData,
             campusDayDataOptions,
             campusYearDataOptions,
 

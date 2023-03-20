@@ -1,4 +1,14 @@
+[v-cloak]{
+    opacity: 0;
+}
+
 .module-container.campus {
+
+    transition: all 1s ease-in-out;
+    &.hide {
+        opacity: 0;
+    }
+
     .module-header {
         position: relative;
 
