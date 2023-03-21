@@ -788,8 +788,6 @@ const app = createApp({
                 },
                 on: {
                     toEdge() {
-                        console.log(rankSwiper)
-                        console.log(rankSwiper.activeIndex)
                         if (rankSwiper.activeIndex == 2) {
                             if (curRankIndex) {
                                 curRankIndex = 0
@@ -833,7 +831,7 @@ const app = createApp({
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"]
         const curVideo = ref(0)
         const videoEnd = () => {
-            console.log('aaaa');
+            console.log('videoEnded');
             curVideo.value++;
             if (curVideo.value >= videoArr.length) {
                 curVideo.value = 0
