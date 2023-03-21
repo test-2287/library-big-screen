@@ -678,9 +678,6 @@
   width: 100px;
   height: 140px;
   margin-bottom: 10px;
-  background-image: url("../../assets/m-image-book.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .module-main.recommend .book-item .name {
