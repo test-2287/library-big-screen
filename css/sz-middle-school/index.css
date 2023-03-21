@@ -619,6 +619,10 @@
   flex-direction: column;
 }
 
+.module-main.activity .swiper.activity {
+  flex-direction: column;
+}
+
 .module-main.activity .list {
   display: flex;
   justify-content: space-between;
@@ -764,6 +768,10 @@
 
 .module-container.rank .module-main.active {
   display: block;
+}
+
+.module-container.rank .module-main .swiper-wrapper {
+  flex-direction: column;
 }
 
 .module-container.rank .module-main .list-item {

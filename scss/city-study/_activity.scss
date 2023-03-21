@@ -3,16 +3,11 @@
     padding: 23px;
     padding-right: 32px;
 
-    // display: flex;
-    // flex-direction: column;
-
     height: 380px;
     overflow: hidden;
 
     .swiper.activity-list{
-        // width: 386px;
         height: 334px;
-        // overflow: hidden;
     }
     .swiper-wrapper {
         flex-direction: column;

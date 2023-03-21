@@ -318,6 +318,10 @@
   padding-right: 20px;
 }
 
+.module-container.rank .module-main .swiper.rank .swiper-wrapper {
+  flex-direction: column;
+}
+
 .module-container.rank .module-main .list-item {
   display: flex;
   align-items: center;
@@ -411,9 +415,6 @@
   width: 100px;
   height: 145px;
   margin-bottom: 5px;
-  background-image: url("../../assets/s-image-book.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .module-main.recommend .book-item .name {

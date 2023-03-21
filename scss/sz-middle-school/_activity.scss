@@ -3,6 +3,9 @@
     padding: 20px 30px 27px 24px;
     display: flex;
     flex-direction: column;
+    .swiper.activity  {
+        flex-direction: column;
+    }
     .list {
         display: flex;;
         justify-content: space-between;

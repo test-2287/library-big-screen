@@ -6,6 +6,12 @@
         padding-top:14px;
         padding-right: 20px;
 
+        .swiper.rank {
+            .swiper-wrapper {
+                flex-direction: column;
+            }
+        }
+
         .list-item {
             display: flex;
             align-items: center;

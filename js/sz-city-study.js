@@ -307,11 +307,26 @@ const app = createApp({
             };
         })
 
+        
         onMounted(() => {
-            new Swiper('.swiper', {
+            new Swiper('.swiper.activity-list', {
                 direction: 'vertical',
                 slidesPerView: 3,
                 spaceBetween: 20,
+                autoplay: {
+                    delay: 3000
+                }
+            })
+
+            new Swiper('.swiper.recommend', {
+                autoplay: {
+                    delay: 3000
+                }
+            })
+
+            new Swiper('.swiper.rank', {
+                direction: 'vertical',
+                slidesPerView: 5,
                 autoplay: {
                     delay: 3000
                 }

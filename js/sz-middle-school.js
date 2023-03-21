@@ -19,7 +19,7 @@ const app = createApp({
                         label: {
                             show: true,
                             position: 'outside',
-                            formatter: function(params) {
+                            formatter: function (params) {
                                 return `{a|${params.percent.toFixed(0)}%}`;
                             },
                             color: '#fff',
@@ -293,7 +293,7 @@ const app = createApp({
                             },
                             data: [20, 45, 32, 62, 22, 44],
                         }
-    
+
                     ]
                 },
                 campusYearDataOptions: {
@@ -345,7 +345,7 @@ const app = createApp({
                         {
                             data: [0.8, 2.9, 3.4, 2, 2.9, 1.6, 2.8],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(52, 199, 232, 1)'
@@ -354,7 +354,7 @@ const app = createApp({
                         {
                             data: [1.5, 2.2, 2, 2.9, 2.5, 2.6, 2.9],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(76, 210, 43, 1)'
@@ -474,7 +474,7 @@ const app = createApp({
                             },
                             data: [40, 20, 55, 38, 56, 44],
                         }
-    
+
                     ]
                 },
                 campusYearDataOptions: {
@@ -524,9 +524,9 @@ const app = createApp({
                     },
                     series: [
                         {
-                            data: [2.5, 4.7, 4.6, 2.1, 3.4, 6.7, 2 ],
+                            data: [2.5, 4.7, 4.6, 2.1, 3.4, 6.7, 2],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(52, 199, 232, 1)'
@@ -535,7 +535,7 @@ const app = createApp({
                         {
                             data: [1.2, 2.4, 4.3, 2.5, 3.3, 5.6, 6],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(76, 210, 43, 1)'
@@ -655,7 +655,7 @@ const app = createApp({
                             },
                             data: [60, 30, 28, 60, 39, 56],
                         }
-    
+
                     ]
                 },
                 campusYearDataOptions: {
@@ -707,7 +707,7 @@ const app = createApp({
                         {
                             data: [5, 6, 7, 6, 5, 6, 5],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(52, 199, 232, 1)'
@@ -716,7 +716,7 @@ const app = createApp({
                         {
                             data: [2, 3, 4, 3, 1, 3, 1],
                             type: 'line',
-                            symbol:'circle',
+                            symbol: 'circle',
                             symbolSize: 6,
                             itemStyle: {
                                 color: 'rgba(76, 210, 43, 1)'
@@ -736,7 +736,7 @@ const app = createApp({
             setInterval(() => {
                 hideCampus.value = true
                 setTimeout(() => {
-                    if (campusIndex.value >= campus.length -1 ) {
+                    if (campusIndex.value >= campus.length - 1) {
                         campusIndex.value = 0
                     } else {
                         campusIndex.value++
@@ -765,7 +765,7 @@ const app = createApp({
                     clearInterval(contentScrollTimer)
                     scroll = 0
                     setTimeout(() => {
-                        scrollContent(announcementContent)    
+                        scrollContent(announcementContent)
                     }, 1000)
                 }
             }, 100)
@@ -774,22 +774,54 @@ const app = createApp({
             scrollContent(announcementContent)
         })
 
-        
+
         let libListActive = ref(true)
-        const toggleLibListActive = () => {
-            setInterval(() => {
-                libListActive.value = !libListActive.value
-            }, 1800)  //180000
+        let rankSwiper = null
+        let curRankIndex = 0
+        const rankSwiperClass = ['.swiper.lib-rank', '.swiper.reader-rank']
+        const initSwiper = (swiperClass) => {
+            rankSwiper = new Swiper(swiperClass, {
+                direction: 'vertical',
+                slidesPerView: 5,
+                autoplay: {
+                    delay: 3000
+                },
+                on: {
+                    toEdge() {
+                        console.log(rankSwiper)
+                        console.log(rankSwiper.activeIndex)
+                        if (rankSwiper.activeIndex == 2) {
+                            if (curRankIndex) {
+                                curRankIndex = 0
+                            } else {
+                                curRankIndex++
+                            }
+                            libListActive.value = !libListActive.value
+                            nextTick(() => {
+                                initSwiper(rankSwiperClass[curRankIndex])    
+                            })
+                        }
+                    }
+                }
+            })
         }
         onMounted(() => {
-            toggleLibListActive()
+            initSwiper(rankSwiperClass[curRankIndex])
         })
 
 
         onMounted(() => {
-            new Swiper('.swiper', {
+            new Swiper('.swiper.recommend', {
                 slidesPerView: 'auto',
                 spaceBetween: 14,
+                autoplay: {
+                    delay: 3000
+                }
+            })
+
+            new Swiper('.swiper.activity', {
+                direction: 'vertical',
+                slidesPerView: 2,
                 autoplay: {
                     delay: 3000
                 }
