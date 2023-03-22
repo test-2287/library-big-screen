@@ -731,8 +731,9 @@ const app = createApp({
         onMounted(() => {
 
             new Swiper('.swiper.campus', {
+                speed: 1500,
                 autoplay: {
-                    delay: 3000,
+                    delay: 5 * 1000,
                 },
                 // on: {
                 //     slideChange() {
