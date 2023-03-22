@@ -29,6 +29,7 @@
         </div>
 
         <div class="screen-container">
+
             <div class="module-container overview">
                 <div class="data-box">
                     <div>
@@ -48,6 +49,7 @@
                         <span class="number">397</span>
                     </div>
                 </div>
+
                 <div class="video-container">
                     <!-- <i class="icon-video"></i> -->
                     <video :src="videoArr[curVideo]" :autoplay="true" controls @ended="videoEnd"></video>
@@ -116,58 +118,70 @@
                 </div>
             </div>
 
-            <div class="module-container campus" :class="{'hide': hideCampus}" v-cloak>
-                <div class="module-header">
-                    <i></i>
-                    <span>{{campus[campusIndex]}}校区</span>
-                    <div class="day-year-brief">
-                        <div>
-                            <span>今日到馆</span>
-                            <span class="number">{{campusData[campusIndex]['dayVisit']}}</span>
-                        </div>
-                        <div>
-                            <span>今年到馆</span>
-                            <span class="number">{{campusData[campusIndex]['yearVisit']}}</span>
-                        </div>
-                        <div>
-                            <span>今日借还</span>
-                            <span class="number">{{campusData[campusIndex]['dayCirculation']}}</span>
-                        </div>
-                        <div>
-                            <span>年度借还</span>
-                            <span class="number">{{campusData[campusIndex]['yearCirculation']}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="module-main campus">
-                    <div class="chart-container day-data">
-                        <div class="chart-header">
-                            <div class="chart-name">
-                                <i class="icon"></i>
-                                <span>日借还量（人）</span>
+            <div class="swiper campus" v-cloak>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(campus, index) in campusData" :key="`campus-${index}`">
+                        <div class="module-container campus">
+
+                            <div class="module-header">
+                                <i></i>
+                                <span>{{campusList[index]}}校区</span>
+                                <div class="day-year-brief">
+                                    <div>
+                                        <span>今日到馆</span>
+                                        <span class="number">{{campus['dayVisit']}}</span>
+                                    </div>
+                                    <div>
+                                        <span>今年到馆</span>
+                                        <span class="number">{{campus['yearVisit']}}</span>
+                                    </div>
+                                    <div>
+                                        <span>今日借还</span>
+                                        <span class="number">{{campus['dayCirculation']}}</span>
+                                    </div>
+                                    <div>
+                                        <span>年度借还</span>
+                                        <span class="number">{{campus['yearCirculation']}}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="chart-legend">
-                                <span>借书</span>
-                                <span>还书</span>
+
+                            <div class="module-main campus">
+                                <div class="chart-container day-data">
+                                    <div class="chart-header">
+                                        <div class="chart-name">
+                                            <i class="icon"></i>
+                                            <span>日借还量（人）</span>
+                                        </div>
+                                        <div class="chart-legend">
+                                            <span>借书</span>
+                                            <span>还书</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart">
+                                        <v-chart class="chart" ref="campusDayChart"
+                                            :option="campus['campusDayDataOptions']" />
+                                    </div>
+                                </div>
+
+                                <div class="chart-container year-data">
+                                    <div class="chart-header">
+                                        <div class="chart-name">
+                                            <i class="icon"></i>
+                                            <span>年借还量（人）</span>
+                                        </div>
+                                        <div class="chart-legend">
+                                            <span>借书</span>
+                                            <span>还书</span>
+                                        </div>
+                                    </div>
+                                    <div class="chart">
+                                        <v-chart class="chart" ref="campusYearChart"
+                                            :option="campus['campusYearDataOptions']"></v-chart>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="chart">
-                            <v-chart :option="campusDayDataOptions" class="chart"></v-chart>
-                        </div>
-                    </div>
-                    <div class="chart-container year-data">
-                        <div class="chart-header">
-                            <div class="chart-name">
-                                <i class="icon"></i>
-                                <span>年借还量（人）</span>
-                            </div>
-                            <div class="chart-legend">
-                                <span>借书</span>
-                                <span>还书</span>
-                            </div>
-                        </div>
-                        <div class="chart">
-                            <v-chart :option="campusYearDataOptions" class="chart"></v-chart>
                         </div>
                     </div>
                 </div>
@@ -214,7 +228,7 @@
                                         </span>
                                         <span class="location">活动地点： 图书馆二楼视听室</span>
                                     </div>
-                                </div>            
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list">
@@ -227,7 +241,7 @@
                                         </span>
                                         <span class="location">活动地点： 图书馆二楼视听室</span>
                                     </div>
-                                </div>            
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list">
@@ -240,7 +254,7 @@
                                         </span>
                                         <span class="location">活动地点： 图书馆二楼视听室</span>
                                     </div>
-                                </div>            
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list">
@@ -253,7 +267,7 @@
                                         </span>
                                         <span class="location">活动地点： 图书馆二楼视听室</span>
                                     </div>
-                                </div>            
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list">
@@ -266,7 +280,7 @@
                                         </span>
                                         <span class="location">活动地点： 图书馆二楼视听室</span>
                                     </div>
-                                </div>            
+                                </div>
                             </div>
 
                         </div>
@@ -348,7 +362,7 @@
 
                             <div class="swiper-slide">
                                 <div class="book-item">
-                                    <div class="image" >
+                                    <div class="image">
                                         <img src="./assets/m-image-book3.svg" alt="">
                                     </div>
                                     <div class="name">遇见动物的时刻</div>
@@ -389,13 +403,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -408,13 +422,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -427,13 +441,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -446,13 +460,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -465,13 +479,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -484,13 +498,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="list-item">
@@ -503,13 +517,13 @@
                                             <span class="book-author">[美] 凯特·迪卡米洛</span>
                                         </div>
                                     </div>
-            
+
                                     <div class="borrow-num">
                                         <span class="label">借阅</span>
                                         <span class="number">86</span>
                                     </div>
-            
-                                </div>            
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -646,7 +660,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>

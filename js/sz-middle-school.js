@@ -180,7 +180,7 @@ const app = createApp({
             }
         })
 
-        const campus = ['泥岗', '东门', '初中']
+        const campusList = ['泥岗', '东门', '初中']
         const campusData = reactive([
             {
                 dayVisit: 32,
@@ -726,26 +726,26 @@ const app = createApp({
                 }
             }
         ])
-        const campusDayDataOptions = ref(null)
-        const campusYearDataOptions = ref(null)
-        let campusIndex = ref(0)
-        let hideCampus = ref(false)
+        let campusDayChart = ref([])
+        let campusYearChart = ref([])
         onMounted(() => {
-            campusDayDataOptions.value = campusData[campusIndex.value].campusDayDataOptions
-            campusYearDataOptions.value = campusData[campusIndex.value].campusYearDataOptions
-            setInterval(() => {
-                hideCampus.value = true
-                setTimeout(() => {
-                    if (campusIndex.value >= campus.length - 1) {
-                        campusIndex.value = 0
-                    } else {
-                        campusIndex.value++
-                    }
-                    campusDayDataOptions.value = campusData[campusIndex.value].campusDayDataOptions
-                    campusYearDataOptions.value = campusData[campusIndex.value].campusYearDataOptions
-                    hideCampus.value = false
-                }, 1000) // 这里的时间=transition时间
-            }, 5 * 1000)  // 这里的时间是校区切换时间
+
+            new Swiper('.swiper.campus', {
+                autoplay: {
+                    delay: 3000,
+                },
+                // on: {
+                //     slideChange() {
+                //         const activeIndex = this.activeIndex;
+                //         const activeDayChart = campusDayChart.value[activeIndex]
+                //         const activeYearChart = campusYearChart.value[activeIndex]
+                //         if (activeDayChart && activeYearChart) {
+                //             activeDayChart.setOption(campusData[activeIndex]['campusDayDataOptions'])
+                //             activeYearChart.setOption(campusData[activeIndex]['campusYearDataOptions'])
+                //         }
+                //     }
+                // }
+            })
         })
 
         const announcementContent = ref(null)
@@ -796,7 +796,7 @@ const app = createApp({
                             }
                             libListActive.value = !libListActive.value
                             nextTick(() => {
-                                initSwiper(rankSwiperClass[curRankIndex])    
+                                initSwiper(rankSwiperClass[curRankIndex])
                             })
                         }
                     }
@@ -842,12 +842,15 @@ const app = createApp({
             bookDataOptions,
             borrowDataOptions,
 
-            hideCampus,
-            campus,
-            campusIndex,
+            // hideCampus,
+            // campusIndex,
+            // campusDayDataOptions,
+            // campusYearDataOptions,
+
+            campusList,
             campusData,
-            campusDayDataOptions,
-            campusYearDataOptions,
+            campusDayChart,
+            campusYearChart,
 
             announcementContent,
             libListActive,

@@ -31,7 +31,7 @@
   justify-self: end;
 }
 
-.screen-container .campus {
+.screen-container .swiper.campus {
   grid-area: campus;
   justify-self: end;
 }
@@ -120,6 +120,12 @@
   height: 21px;
   background-image: url("../../assets/m-icon-cloud.svg");
   background-size: cover;
+}
+
+.swiper.campus {
+  width: 916px;
+  height: 314px;
+  margin-right: -1px;
 }
 
 .module-container {
