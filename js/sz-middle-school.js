@@ -729,24 +729,34 @@ const app = createApp({
         let campusDayChart = ref([])
         let campusYearChart = ref([])
         onMounted(() => {
-
+            let chartDomList, firstChartDom, dayChartDom, yearChartDom = null
+            let dayInstance, yearInstance = null
             new Swiper('.swiper.campus', {
+                loop: true,
                 speed: 1500,
+                uniqueNavElements: true,
                 autoplay: {
                     delay: 5 * 1000,
                 },
-                // on: {
-                //     slideChange() {
-                //         const activeIndex = this.activeIndex;
-                //         const activeDayChart = campusDayChart.value[activeIndex]
-                //         const activeYearChart = campusYearChart.value[activeIndex]
-                //         if (activeDayChart && activeYearChart) {
-                //             activeDayChart.setOption(campusData[activeIndex]['campusDayDataOptions'])
-                //             activeYearChart.setOption(campusData[activeIndex]['campusYearDataOptions'])
-                //         }
-                //     }
-                // }
+                on: {
+                    slideChange() {
+                        const activeIndex = this.activeIndex;
+                        if (activeIndex == 4) {
+                            dayInstance.setOption(campusData[0]['campusDayDataOptions'])
+                            yearInstance.setOption(campusData[0]['campusYearDataOptions'])
+                        }
+                    }
+                }
             })
+            nextTick(() => {
+                chartDomList = document.querySelectorAll('.swiper.campus .swiper-slide')
+                firstChartDom = chartDomList[4]
+                dayChartDom = firstChartDom.querySelector('.day-data .chart')
+                yearChartDom = firstChartDom.querySelector('.year-data .chart')
+                dayInstance = echarts.init(dayChartDom)
+                yearInstance = echarts.init(yearChartDom)
+            })
+
         })
 
         const announcementContent = ref(null)
