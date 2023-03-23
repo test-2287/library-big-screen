@@ -734,6 +734,7 @@ const app = createApp({
             new Swiper('.swiper.campus', {
                 loop: true,
                 speed: 1500,
+                spaceBetween: 10,
                 uniqueNavElements: true,
                 autoplay: {
                     delay: 5 * 1000,
